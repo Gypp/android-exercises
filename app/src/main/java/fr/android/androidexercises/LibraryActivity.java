@@ -2,6 +2,7 @@ package fr.android.androidexercises;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Random;
 public class LibraryActivity extends AppCompatActivity {
 
     private static final Random RANDOM = new Random();
+    private ListView bookListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,9 @@ public class LibraryActivity extends AppCompatActivity {
         List<Book> books = getBooks();
 
         // TODO findViewById() and setAdapter()
+        bookListView = (ListView)findViewById(R.id.bookListView);
+        BookAdapter bookAdapter = new BookAdapter(this, books);
+        bookListView.setAdapter(bookAdapter);
     }
 
     private List<Book> getBooks() {
