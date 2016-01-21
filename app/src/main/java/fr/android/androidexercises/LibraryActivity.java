@@ -1,5 +1,6 @@
 package fr.android.androidexercises;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +26,9 @@ public class LibraryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Replace with startActivityForResult() to start BookActivity
-                Toast.makeText(LibraryActivity.this, R.string.toast_todo, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LibraryActivity.this, BookActivity.class);
+                startActivityForResult(intent, Activity.RESULT_OK);
+                //Toast.makeText(LibraryActivity.this, R.string.toast_todo, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -33,6 +36,7 @@ public class LibraryActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO get back book name
+        Toast.makeText(this, data.getStringExtra("bookName"), Toast.LENGTH_SHORT).show();
     }
 
     @Override
